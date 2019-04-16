@@ -77,10 +77,11 @@ define python::pyvenv (
     }
 
     file { $venv_dir:
-      ensure => directory,
-      owner  => $owner,
-      group  => $group,
-      mode   => $mode,
+      ensure  => directory,
+      owner   => $owner,
+      recurse => true,
+      group   => $group,
+      mode    => $mode,
     }
 
     exec { "python_virtualenv_${venv_dir}":
